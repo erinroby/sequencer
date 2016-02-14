@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+}
+
+.flex25 {
+  width: 25%;
+}
+
+.flex23 {
+  width: 23%;
+}
+
+.flex60 {
+  width: 60%;
+}
+
+.circle-button {
+  border-radius: 50px;
+  line-height: 100px;
+  border: none;
+  display: block;
+}
+
+.circle-button:hover {
+  background: #333;
+}
+
+.knob {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
+
+#knob1 {
+  background: blue;
+}
+
+#knob2 {
+  background: pink;
+}
+
+#knob3 {
+  background: orange;
+}
+
+.blackKey {
+  width:60px;
+  height:60px;
+  background:#000;
+  margin: 12px;
+}
+
+.blackKeyLeft {
+  margin-right: 70px;
+}
+
+.whiteKey {
+  width:60px;
+  height:200px;
+  background: grey;
+  border: 2px;
+  border-color: black;
+  border-radius: 40px;
+  margin: 10px;
+}
