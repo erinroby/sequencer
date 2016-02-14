@@ -4,6 +4,9 @@
  *
  * Simple "Hello world" example
  */
+
+(function(){console.log("this ran");}())
+
 Physics(function(world){
 
   var viewWidth = 500;
@@ -14,15 +17,15 @@ Physics(function(world){
     width: viewWidth,
     height: viewHeight,
     meta: false, // don't display meta data
-    styles: {
-        // set colors for the circle bodies
-        'circle' : {
-            strokeStyle: 'hsla(60, 37%, 17%, 1)',
-            lineWidth: 1,
-            fillStyle: 'hsla(60, 37%, 57%, 0.8)',
-            angleIndicator: 'hsla(60, 37%, 17%, 0.4)'
-        }
-    }
+    // styles: {
+    //     // set colors for the ball bodies
+    //     'circle' : {
+    //         // strokeStyle: 'hsla(60, 37%, 17%, 1)',
+    //         // lineWidth: 1
+    //         // fillStyle: 'hsla(60, 37%, 57%, 0.8)',
+    //         // angleIndicator: 'hsla(60, 37%, 17%, 0.4)'
+    //     }
+    // }
   });
 
   // add the renderer
@@ -42,14 +45,14 @@ Physics(function(world){
       cof: 0.99
   }));
 
-  // add a circle
+  // add a ball
   world.add(
       Physics.body('circle', {
         x: 50, // x-coordinate
         y: 30, // y-coordinate
         vx: 0.2, // velocity in x-direction
         vy: 0.01, // velocity in y-direction
-        radius: 20
+        radius: 2.0
       })
   );
 
