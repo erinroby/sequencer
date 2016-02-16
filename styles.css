@@ -1,4 +1,6 @@
 h1{
+  font-family: courier, monospace;
+  font-weight: lighter;
   text-align: center;
 }
 #menu-toggle{
@@ -44,6 +46,11 @@ h1{
   transition: transform 0.5s;
 }
 
+
+button:hover {
+  background: #333;
+}
+
 .container {
   display: flex;
 }
@@ -67,10 +74,6 @@ h1{
   display: block;
 }
 
-.circle-button:hover {
-  background: #333;
-}
-
 .knob {
   display: block;
   width: 50px;
@@ -78,7 +81,7 @@ h1{
   margin: 10px;
 }
 
-#knob1 {
+/*#knob1 {
   background: blue;
 }
 
@@ -88,7 +91,7 @@ h1{
 
 #knob3 {
   background: orange;
-}
+}*/
 
 .blackKey {
   width:60px;
@@ -104,9 +107,8 @@ h1{
 .whiteKey {
   width:60px;
   height:200px;
-  background: grey;
-  border: 2px;
-  border-color: black;
-  border-radius: 40px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 30px;
   margin: 10px;
 }
