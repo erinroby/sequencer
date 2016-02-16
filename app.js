@@ -9,27 +9,29 @@
 
 Physics(function(world){
 
-  var viewWidth = 500;
+// This is the canvas size
+// TODO: Make responsive instead of hardcoding (Thomas)
+  var viewWidth = 300;
   var viewHeight = 300;
 
   var renderer = Physics.renderer('canvas', {
     el: 'viewport',
     width: viewWidth,
     height: viewHeight,
-    meta: false, // don't display meta data
-    // styles: {
-    //     // set colors for the ball bodies
-    //     'circle' : {
-    //         // strokeStyle: 'hsla(60, 37%, 17%, 1)',
-    //         // lineWidth: 1
-    //         // fillStyle: 'hsla(60, 37%, 57%, 0.8)',
-    //         // angleIndicator: 'hsla(60, 37%, 17%, 0.4)'
-    //     }
-    // }
+    meta: false // don't display meta data
+    ,styles: {
+        // set colors for the ball bodies
+        'circle' : {
+            strokeStyle: 'blue',
+            lineWidth: 1,
+            fillStyle: 'red',
+            angleIndicator: 'white'
+        }
+    }
   });
 
   // add the renderer
-  world.add( renderer );
+  world.add(renderer);
   // render on each step
   world.subscribe('step', function(){
     world.render();
@@ -37,30 +39,45 @@ Physics(function(world){
 
   // bounds of the window
   var viewportBounds = Physics.aabb(0, 0, viewWidth, viewHeight);
+  // var rect1 = Physics.aabb(0, 100, 300, 200);
+  // var rect2 = Physics.aabb(100, 0, 200, 300);
+  // var viewportBounds = Physics.aabb.union(rect1, rect2, true);
 
   // constrain objects to these bounds
   world.add(Physics.behavior('edge-collision-detection', {
       aabb: viewportBounds,
       restitution: 0.99,
-      cof: 0.99
+      cof: 0.00
   }));
 
-  // add a ball
-  world.add(
-      Physics.body('circle', {
-        x: 50, // x-coordinate
-        y: 30, // y-coordinate
-        vx: 0.2, // velocity in x-direction
-        vy: 0.01, // velocity in y-direction
-        radius: 2.0
-      })
-  );
+  var smallBall = Physics.body('circle', {
+    x: 1,
+    y: 1,
+    vx: 0.2,
+    vy: 0.01,
+    radius: 2.0,
+    treatment: 'dynamic'
+  })
+
+  var bigBall = Physics.body('circle', {
+    x: 60,
+    y: 150,
+    vx: 0.5,
+    vy: 0.01,
+    radius: 10
+  })
+
+  // add the ball(s)
+  world.add(smallBall);
+  world.add(bigBall);
 
   // ensure objects bounce when edge collision is detected
   world.add( Physics.behavior('body-impulse-response') );
 
   // add some gravity
   world.add( Physics.behavior('constant-acceleration') );
+
+  world.add(Physics.behavior('body-collision-detection'));
 
   // subscribe to ticker to advance the simulation
   Physics.util.ticker.subscribe(function( time, dt ){
