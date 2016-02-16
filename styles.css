@@ -1,3 +1,7 @@
+button:hover {
+  background: #333;
+}
+
 .container {
   display: flex;
 }
@@ -21,10 +25,6 @@
   display: block;
 }
 
-.circle-button:hover {
-  background: #333;
-}
-
 .knob {
   display: block;
   width: 50px;
@@ -32,7 +32,7 @@
   margin: 10px;
 }
 
-#knob1 {
+/*#knob1 {
   background: blue;
 }
 
@@ -42,7 +42,7 @@
 
 #knob3 {
   background: orange;
-}
+}*/
 
 .blackKey {
   width:60px;
@@ -58,9 +58,8 @@
 .whiteKey {
   width:60px;
   height:200px;
-  background: grey;
-  border: 2px;
-  border-color: black;
-  border-radius: 40px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 30px;
   margin: 10px;
 }
