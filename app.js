@@ -71,13 +71,16 @@ Physics(function(world){
   world.add(smallBall);
   world.add(bigBall);
 
-  // ensure objects bounce when edge collision is detected
-  world.add( Physics.behavior('body-impulse-response') );
-
-  // add some gravity
-  world.add( Physics.behavior('constant-acceleration') );
-
-  world.add(Physics.behavior('body-collision-detection'));
+  // Add behaviors
+  world.add([
+    // Make objects bounce off canvas bounds
+    Physics.behavior('body-impulse-response'),
+    // Add Gravity to pull objects downward
+    Physics.behavior('constant-acceleration'),
+    // Make bodies bounce off each other
+    Physics.behavior('body-collision-detection'),
+    Physics.behavior('sweep-prune')
+  ]);
 
   // subscribe to ticker to advance the simulation
   Physics.util.ticker.subscribe(function( time, dt ){
