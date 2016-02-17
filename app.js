@@ -7,26 +7,26 @@
 
 Physics(function(world){
   // Define the canvas bounds
-  var viewWidth = window.innerWidth;
-  var viewHeight = window.innerHeight;
+  var viewWidth = 300;
+  var viewHeight = 300;
 
   // Define canvas
   var renderer = Physics.renderer('canvas', {
     el: 'viewport',
     width: viewWidth,
     height: viewHeight,
-    meta: true // don't display meta data
+    meta: true // display meta data?
     ,styles: {
         // set colors for the bodies
-        'circle' : {
-            strokeStyle: 'blue',
-            lineWidth: 1,
-            fillStyle: 'red',
-            angleIndicator: 'white'
-        },
+        // 'circle' : {
+        //     strokeStyle: 'blue',
+        //     lineWidth: 1,
+        //     fillStyle: 'red',
+        //     angleIndicator: 'white'
+        // },
 
         'rectangle' : {
-          fillStyle: 'gray'
+          fillStyle: 'black'
         }
     }
   });
@@ -50,77 +50,77 @@ Physics(function(world){
   });
 
   // Create ball objects
-  var smallBall = Physics.body('circle', {
+  var ball1 = Physics.body('circle', {
     x: 71,
     y: 91,
     vx: 0.2,
     vy: 0.01,
-    radius: 20,
-    treatment: 'dynamic'
+    radius: 5,
+    treatment: 'dynamic',
+    strokeStyle: 'blue',
+    lineWidth: 1,
+    fillStyle: '#0xa42222',
+    angleIndicator: 'white'
   })
-  var bigBall = Physics.body('circle', {
+  var ball2 = Physics.body('circle', {
     x: 60,
     y: 150,
     vx: 0.5,
     vy: 0.01,
-    radius: 50,
+    radius: 5,
+    treatment: 'dynamic'
+  })
+  var ball3 = Physics.body('circle', {
+    x: 100,
+    y: 120,
+    vx: 0.5,
+    vy: 0.01,
+    radius: 5,
     treatment: 'dynamic'
   })
 
   // Add the ball(s) to the world
   world.add([
-    smallBall,
-    bigBall,
+    ball1,
+    ball2,
+    ball3
   ]);
 
   // Create hexagon-shaped bounds.
   // TODO: Create it as a CompoundBody that has polygon children representing each quadrant of the hexagon-shaped bounds
   var hex1 = Physics.body('rectangle', {
-    x: 400,
-    y: 50,
+    x: 0,
+    y: 0,
     width: viewWidth*2,
-    height: 100
-    ,treatment: 'static'
+    height: 1,
+    treatment: 'static'
   })
   var hex2 = Physics.body('rectangle', {
-    x: 400,
-    y: viewHeight,
+    x: 0,
+    y: 300,
     width: viewWidth*2,
-    height: 100
-    ,treatment: 'static'
+    height: 1,
+    treatment: 'static'
   })
   var hex3 = Physics.body('rectangle', {
-    x: 50,
-    y: 100,
-    width: 100,
-    height: viewHeight*2
-    ,treatment: 'static'
+    x: 0,
+    y: 0,
+    width: 1,
+    height: viewHeight*2,
+    treatment: 'static'
   })
   var hex4 = Physics.body('rectangle', {
-    x: 1240,
-    y: 100,
-    width: 100,
-    height: viewHeight*2
-    ,treatment: 'static'
+    x: 300,
+    y: 0,
+    width: 1,
+    height: viewHeight*2,
+    treatment: 'static'
   })
-
-  // var bigBound = Physics.body('compound', {
-  //   // x: 300,
-  //   // y: 300,
-  //   children: [
-  //               hex1,
-  //               hex2,
-  //               hex3,
-  //               hex4
-  //                   ]
-  // });
 
   world.add(hex1);
   world.add(hex2);
   world.add(hex3);
   world.add(hex4);
-
-
 
   // Add behaviors to the world
   world.add([
