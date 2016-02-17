@@ -5,20 +5,13 @@
  * Simple "Hello world" example
  */
 
-(function(){console.log("this ran");}())
-
 Physics(function(world){
-
-// This is the canvas size
-// TODO: Make responsive instead of hardcoding (Thomas)
-  var viewWidth = 300;
-  var viewHeight = 300;
-
+  // Define canvas
   var renderer = Physics.renderer('canvas', {
     el: 'viewport',
     width: viewWidth,
     height: viewHeight,
-    meta: false // don't display meta data
+    meta: true // don't display meta data
     ,styles: {
         // set colors for the ball bodies
         'circle' : {
@@ -30,48 +23,109 @@ Physics(function(world){
     }
   });
 
+  // Define the bounds
+  var viewWidth = window.innerWidth;
+  var viewHeight = window.innerHeight;
+
+  // Create Axis-Aligned Bounding Box (aabb)
+  var viewportBounds = Physics.aabb(0, 0, viewWidth, viewHeight)
+      ,edgeBounce
+      ,renderer;
+
+  // edgeBounce defines what happens when a body hits the outer bounds
+  edgeBounce = (Physics.behavior('edge-collision-detection', {
+      aabb: viewportBounds,
+      restitution: 0.99,
+      cof: 0.51
+  }));
+
+  // bodyBounce defines what happens when a body hits another bodyBounce
+  bodyBounce = Physics.behavior('body-collision-detection');
+
+  // Add the bounds and their behavior to the world
+  world.add(edgeBounce);
+  world.add(bodyBounce);
+
+  // Recalculate the bounds when the window is resized
+  window.addEventListener('resize', function() {
+    viewportBounds = Physics.aabb(0, 0, renderer.width, renderer.height);
+    edgeBounce.setAABB(viewportBounds);
+  }, true);
+
   // add the renderer
   world.add(renderer);
   // render on each step
-  world.subscribe('step', function(){
+  world.on('step', function(){
     world.render();
   });
 
-  // bounds of the window
-  var viewportBounds = Physics.aabb(0, 0, viewWidth, viewHeight);
-  // var rect1 = Physics.aabb(0, 100, 300, 200);
-  // var rect2 = Physics.aabb(100, 0, 200, 300);
-  // var viewportBounds = Physics.aabb.union(rect1, rect2, true);
-
-  // constrain objects to these bounds
-  world.add(Physics.behavior('edge-collision-detection', {
-      aabb: viewportBounds,
-      restitution: 0.99,
-      cof: 0.00
-  }));
-
+  // Create ball objects
   var smallBall = Physics.body('circle', {
-    x: 1,
-    y: 1,
+    x: 71,
+    y: 91,
     vx: 0.2,
     vy: 0.01,
-    radius: 2.0,
+    radius: 20,
     treatment: 'dynamic'
   })
-
   var bigBall = Physics.body('circle', {
     x: 60,
     y: 150,
     vx: 0.5,
     vy: 0.01,
-    radius: 10
+    radius: 50
   })
 
-  // add the ball(s)
-  world.add(smallBall);
-  world.add(bigBall);
+  // Add the ball(s) to the world
+  world.add([
+    smallBall,
+    bigBall,
+  ]);
 
-  // Add behaviors
+  // Create hexagon-shaped bounds.
+  // Create it as a CompoundBody that has polygon children representing each quadrant of the hexagon-shaped bounds
+  var hex1 = Physics.body('rectangle', {
+    x: 400,
+    y: 50,
+    width: viewWidth*2,
+    height: 100
+    ,treatment: 'static'
+  })
+  var hex2 = Physics.body('rectangle', {
+    x: 400,
+    y: viewHeight,
+    width: viewWidth*2,
+    height: 100
+    ,treatment: 'static'
+  })
+  var hex3 = Physics.body('rectangle', {
+    x: 50,
+    y: 100,
+    width: 100,
+    height: viewHeight*2
+    ,treatment: 'static'
+  })
+  var hex4 = Physics.body('rectangle', {
+    x: 1000,
+    y: viewWidth,
+    width: 100,
+    height: viewHeight*2
+    ,treatment: 'static'
+  })
+
+  world.add(hex1);
+  world.add(hex2);
+  world.add(hex3);
+  world.add(hex4);
+  // var hexArea = Physics.body('compound', {
+  //   x: viewWidth/2,
+  //   y: viewHeight/2,
+  //   children: []
+  // })
+
+
+
+  // Add behaviors to the world
   world.add([
     // Make objects bounce off canvas bounds
     Physics.behavior('body-impulse-response'),
@@ -83,7 +137,7 @@ Physics(function(world){
   ]);
 
   // subscribe to ticker to advance the simulation
-  Physics.util.ticker.subscribe(function( time, dt ){
+  Physics.util.ticker.on(function( time, dt ){
 
       world.step( time );
   });
