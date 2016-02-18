@@ -5,19 +5,18 @@ h1{
 }
 #menu-toggle{
   display: block;
-  position: relative;
-  top: 50px;
-  left: 50px;
+  top: 30px;
+  left: 30px;
   z-index: 1;
 }
 #menu-toggle input{
   display: block;
   position: absolute;
+  width: 40px;
+  height: 30px;
   opacity: 0;
   z-index: 2;
   cursor: pointer;
-  width: 40px;
-  height: 30px;
 }
 #menu-toggle span{
   display: block;
@@ -28,24 +27,49 @@ h1{
   background-color: gray;
   border-radius: 3px;
   z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+#menu-toggle span:first-child{
+  transform-origin: 0% 0%;
+}
+#menu-toggle span:nth-last-child(2){
+  transform-origin: 0% 100%;
+}
+#menu-toggle input:checked ~ span{
+  transform: rotate(45deg) translate(-2px, -1px);
+}
+#menu-toggle input:checked ~ span:nth-last-child(2){
+  transform: rotate(-45deg) translate(0, -1px);
+}
+#menu-toggle input:checked ~ span:nth-last-child(3){
+  opacity: 0;
 }
 #menu{
+  font-family: Courier;
   position: absolute;
   list-style: none;
   background-color: lightgray;
-  width: 300px;
-  padding: 50px;
+  width: 275px;
+  padding: 10px 0;
   transform-origin: 0% 0%;
   transform: translate(-120%, 0%);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 #menu li{
   padding: 20px;
 }
 #menu-toggle input:checked ~ #menu{
-  transform: scale(1.0, 1.0);
-  transition: transform 0.5s;
+  transform: translate(10px);
 }
-
+a{
+  text-decoration: none;
+  color: gray;
+}
+a:hover{
+  color: black;
+}
 
 button:hover {
   background: #333;
