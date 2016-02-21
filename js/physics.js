@@ -4,12 +4,16 @@ var Engine = Matter.Engine,
   Bodies = Matter.Bodies,
   Composite = Matter.Composite,
   Composites = Matter.Composites,
+  MouseConstraint = Matter.MouseConstraint,
   Events = Matter.Events;
 
 // boilerplate: create a Matter.js engine
 var engine = Engine.create(document.body, {
   render: {
     options: {
+      width: 600,
+      height: 600,
+      background: "ffffff",
       wireframes: false,
       showAngleIndicator: false
     }
@@ -22,6 +26,10 @@ var world = engine.world;
 engine.world.gravity.x = 0;
 engine.world.gravity.y = 0;
 
+// mouse-controlled constraint
+var mouseConstraint = MouseConstraint.create(engine);
+World.add(engine.world, mouseConstraint);
+
 // add boundaries
 var side = 0;
 var scale = 200;
@@ -30,22 +38,42 @@ var stackBoundry = Composites.stack(100, 100, 1, 4, 0, 0, function(x, y) {
   switch(side) {
     case 0:
       body = Bodies.rectangle(x, y, 2 * scale, 5, {
-        isStatic: true
+        isStatic: true,
+        render: {
+          fillStyle: 'orange',
+          strokeStyle: 'orange',
+          lineWidth: 0.5
+        }
       });
       break;
     case 1:
       body = Bodies.rectangle(x + 2 * scale - 5, y, 5, 2 * scale, {
-        isStatic: true
+        isStatic: true,
+        render: {
+          fillStyle: 'orange',
+          strokeStyle: 'orange',
+          lineWidth: 0.5
+        }
       });
       break;
     case 2:
       body = Bodies.rectangle(x, y, 2 * scale, 5, {
-        isStatic: true
+        isStatic: true,
+        render: {
+          fillStyle: 'orange',
+          strokeStyle: 'orange',
+          lineWidth: 0.5
+        }
       });
       break;
     case 3:
       body = Bodies.rectangle(x, y - 2 * scale - 5, 5, 2 * scale, {
-        isStatic: true
+        isStatic: true,
+        render: {
+          fillStyle: 'orange',
+          strokeStyle: 'orange',
+          lineWidth: 0.5
+        }
       });
       break;
   }
@@ -63,7 +91,12 @@ function newCircle(note) {
     friction: 0,
     frictionAir: 0,
     frictionStatic: 0,
-    force: { x: 0.01, y: 0.01}
+    force: { x: 0.01, y: 0.01},
+    render: {
+      fillStyle: 'blue',
+      strokeStyle: 'blue',
+      lineWidth: 0.5
+    }
    }));
   var that = this;
   Events.on(engine, 'collisionStart', function(event) {
