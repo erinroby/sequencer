@@ -6,27 +6,7 @@ var Engine = Matter.Engine,
   Composites = Matter.Composites,
   Events = Matter.Events;
 
-
 // boilerplate: create a Matter.js engine
-// var canvasEl = document.getElementById('viewport');
-// document.body = canvasEl;
-
-// sceneEvents.push(
-//
-//            // an example of using collisionActive event on an engine
-//            Events.on(engine, 'collisionActive', function(event) {
-//                var pairs = event.pairs;
-//
-//                // change object colours to show those in an active collision (e.g. resting contact)
-//                for (var i = 0; i < pairs.length; i++) {
-//                    var pair = pairs[i];
-//                    pair.bodyA.render.fillStyle = '#aaaaaa';
-//                    pair.bodyB.render.fillStyle = '#aaaaaa';
-//                }
-//            })
-//
-//        );
-
 var engine = Engine.create(document.body, {
   render: {
     options: {
