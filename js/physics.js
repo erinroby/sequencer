@@ -3,11 +3,29 @@ var Engine = Matter.Engine,
   World = Matter.World,
   Bodies = Matter.Bodies,
   Composite = Matter.Composite,
-  Composites = Matter.Composites;
+  Composites = Matter.Composites,
+  Events = Matter.Events;
+
 
 // boilerplate: create a Matter.js engine
 // var canvasEl = document.getElementById('viewport');
 // document.body = canvasEl;
+
+// sceneEvents.push(
+//
+//            // an example of using collisionActive event on an engine
+//            Events.on(engine, 'collisionActive', function(event) {
+//                var pairs = event.pairs;
+//
+//                // change object colours to show those in an active collision (e.g. resting contact)
+//                for (var i = 0; i < pairs.length; i++) {
+//                    var pair = pairs[i];
+//                    pair.bodyA.render.fillStyle = '#aaaaaa';
+//                    pair.bodyB.render.fillStyle = '#aaaaaa';
+//                }
+//            })
+//
+//        );
 
 var engine = Engine.create(document.body, {
   render: {
@@ -60,14 +78,20 @@ World.add(world, stackBoundry);
 //add beach balls -- moved to keyboard event listener
 function newCircle(note) {
   this.note = note;
-   World.add(world, Bodies.circle(300, 300, 10, {
-     restitution: 1,
-     friction: 0,
-     frictionAir: 0,
-     frictionStatic: 0,
-     force: { x: 0.01, y: 0.01}
+  World.add(world, Bodies.circle(300, 300, 10, {
+    restitution: 1,
+    friction: 0,
+    frictionAir: 0,
+    frictionStatic: 0,
+    force: { x: 0.01, y: 0.01}
    }));
-   piano.play(this.note, 4, 2);
+  // this.play = function() {
+  //   piano.play(this.note, 4, 2);
+  // };
+  var that = this;
+  Events.on(engine, 'collisionActive', function(event) {
+        piano.play(that.note, 4, 2);
+      });
 }
 
 //add boundry rotation, basic animation timer boilerplate
