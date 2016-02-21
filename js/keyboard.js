@@ -18,3 +18,8 @@ for (var i = 0; i < keys.length; i++) {
   var key = new Key(keys[i].toUpperCase(), document.getElementById(keys[i] + 'Key'));
   key.addListener();
 };
+
+//the knobs - only on/off right now!
+//change rotation of square
+//change repulsion between bodies
+//inverse gravity
