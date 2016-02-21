@@ -6,11 +6,14 @@ var Engine = Matter.Engine,
   Composites = Matter.Composites;
 
 // boilerplate: create a Matter.js engine
+// var canvasEl = document.getElementById('viewport');
+// document.body = canvasEl;
+
 var engine = Engine.create(document.body, {
   render: {
     options: {
-      wireframes: true,
-      showAngleIndicator: true
+      wireframes: false,
+      showAngleIndicator: false
     }
   }
 });
@@ -55,13 +58,13 @@ var stackBoundry = Composites.stack(100, 100, 1, 4, 0, 0, function(x, y) {
 World.add(world, stackBoundry);
 
 //add beach balls
- World.add(world, Bodies.circle(300, 300, 20, {
-   restitution: 1,
-   friction: 0,
-   frictionAir: 0,
-   frictionStatic: 0,
-   force: { x: 0.01, y: 0.01}
- }));
+ // World.add(world, Bodies.circle(300, 300, 10, {
+ //   restitution: 1,
+ //   friction: 0,
+ //   frictionAir: 0,
+ //   frictionStatic: 0,
+ //   force: { x: 0.01, y: 0.01}
+ // }));
 
 //add boundry rotation, basic animation timer boilerplate
 var angle = 0.01;
