@@ -20,7 +20,7 @@ var world = engine.world;
 
 // boilerplate: gravity init
 engine.world.gravity.x = 0;
-engine.world.gravity.y = 0;
+engine.world.gravity.y = 1;
 
 // add boundaries
 var side = 0;
@@ -72,7 +72,7 @@ function newCircle(note) {
 }
 
 //add boundry rotation, basic animation timer boilerplate
-var angle = 0.01;
+var angle = 0.05;
 window.setInterval(function() {
   Composite.rotate(stackBoundry, angle, { x: 300, y: 300 });
 }, 100);

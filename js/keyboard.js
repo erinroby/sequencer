@@ -1,4 +1,5 @@
 var keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'a#', 'c#', 'd#', 'f#', 'g#'];
+var knobs = ['rotation', 'repulsion', 'gravity'];
 var synth = new AudioSynth;
 var piano = synth.createInstrument('piano');
 
@@ -19,7 +20,45 @@ for (var i = 0; i < keys.length; i++) {
   key.addListener();
 };
 
-//the knobs - only on/off right now!
-//change rotation of square
-//change repulsion between bodies
-//inverse gravity
+function Knob(knobEl) {
+  this.status = status;
+  this.knobEl = knobEl;
+  var that = this;
+  this.addListener = function() {
+    this.knobEl.addEventListener('click', function(event) {
+      event.preventDefault();
+      console.log(event.target);
+      var knobClicked = event.target.id;
+      switch (knobClicked) {
+        // Reverse Rotation Knob
+        case 'knob1':
+        angle = -angle;
+          break;
+
+        // Repulsion Control Knob
+        case 'knob2':
+          break;
+
+        // Gravity Changer Knob
+        case 'knob3':
+        // engine.world.gravity = -engine.world.gravity;
+          break;
+
+        default:
+
+      }
+
+    });
+  }
+}
+
+for (var i = 0; i < knobs.length; i++) {
+  var knob = new Knob(document.getElementById('knob'+(i+1)));
+  knob.addListener();
+}
+
+function randNum() {
+  var MAX=1;
+  var MIN=-1;
+  return Math.floor(Math.random() * (MAX - MIN)) + MIN;
+}
