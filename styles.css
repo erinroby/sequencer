@@ -106,15 +106,27 @@ button:hover {
 }
 
 #knob1 {
-  background: #FBE4CC;
+  background: rgba(251, 228, 204, .5);
+}
+
+#knob1:hover {
+  background: rgb(251, 228, 204);
 }
 
 #knob2 {
-  background: #558DE9;
+  background: rgba(85, 141, 233, .5);
+}
+
+#knob2:hover {
+  background: rgb(85, 141, 233);
 }
 
 #knob3 {
-  background: #0B5393;
+  background: rgba(11, 83, 147, .5);
+}
+
+#knob3:hover {
+  background: rgb(11, 83, 147);
 }
 
 .blackKey {
@@ -135,4 +147,8 @@ button:hover {
   border: 2px solid black;
   border-radius: 30px;
   margin: 10px;
+}
+
+.whiteKey:hover {
+  background: #F2F2F2;
 }
