@@ -87,7 +87,7 @@ World.add(world, stackBoundry);
 function newCircle(note) {
   this.note = note;
   World.add(world, Bodies.circle(300, 300, 10, {
-    restitution: 1,
+    restitution: 1.1,
     friction: 0,
     frictionAir: 0,
     frictionStatic: 0,

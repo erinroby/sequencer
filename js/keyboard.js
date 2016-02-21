@@ -1,7 +1,7 @@
 var keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'a#', 'c#', 'd#', 'f#', 'g#'];
 var knobs = ['rotation', 'repulsion', 'gravity'];
 var synth = new AudioSynth;
-var piano = synth.createInstrument('piano');
+var piano = synth.createInstrument('acoustic');
 
 function Key(note, keyEl) {
   this.note = note;
@@ -23,7 +23,6 @@ for (var i = 0; i < keys.length; i++) {
 function Knob(knobEl) {
   this.status = status;
   this.knobEl = knobEl;
-  var that = this;
   this.addListener = function() {
     this.knobEl.addEventListener('click', function(event) {
       event.preventDefault();
