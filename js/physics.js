@@ -9,11 +9,13 @@ var Engine = Matter.Engine,
 // var canvasEl = document.getElementById('viewport');
 // document.body = canvasEl;
 
-var engine = Engine.create(document.body, {
+var engine = Engine.create({
   render: {
+    canvas: document.getElementById('viewport'),
     options: {
+      element: document.body,
       wireframes: false,
-      showAngleIndicator: false
+      showAngleIndicator: false,
     }
   }
 });
