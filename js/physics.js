@@ -8,14 +8,16 @@ var Engine = Matter.Engine,
   Events = Matter.Events;
 
 // boilerplate: create a Matter.js engine
-var engine = Engine.create(document.body, {
+var engine = Engine.create({
   render: {
+    canvas: document.getElementById('viewport'),
     options: {
+      element: document.body,
       width: 600,
       height: 600,
       background: "ffffff",
       wireframes: false,
-      showAngleIndicator: false
+      showAngleIndicator: false,
     }
   }
 });
