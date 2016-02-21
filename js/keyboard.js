@@ -9,8 +9,7 @@ function Key(note, keyEl) {
   this.addListener = function() {
     this.keyEl.addEventListener("click", function(event) {
       event.preventDefault();
-      newCircle();
-      piano.play(that.note, 4, 2); // write an if statement for the octave 3 OR 4 here and refactor to ball object. How to pass to new ball?
+      newCircle(that.note);
     });
   }
 }
