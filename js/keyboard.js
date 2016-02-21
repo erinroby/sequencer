@@ -1,6 +1,7 @@
 var keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'a#', 'c#', 'd#', 'f#', 'g#'];
 var knobs = ['rotation', 'repulsion', 'gravity'];
 var synth = new AudioSynth;
+synth.setVolume(0.1337); // Recommended volume setting
 var piano = synth.createInstrument('acoustic');
 
 function Key(note, keyEl) {
