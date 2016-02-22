@@ -1,5 +1,5 @@
 var keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'a#', 'c#', 'd#', 'f#', 'g#'];
-var knobs = ['rotation', 'repulsion', 'gravity'];
+var knobs = ['decrease', 'increase', 'instrument'];
 var synth = new AudioSynth;
 synth.setVolume(0.1337); // Recommended volume setting
 var piano = synth.createInstrument('piano');
@@ -37,24 +37,18 @@ function Knob(knobEl) {
       switch (knobClicked) {
         // Change instrument
         case 'knob1':
-        // angle = -angle;
+        angle-=.1;
           break;
-
         // Repulsion Control Knob
         case 'knob2':
         angle+=.1;
           break;
-
         // Gravity Changer Knob
         case 'knob3':
-        // engine.world.gravity = -engine.world.gravity;
         instrument++;
           break;
-
         default:
-
       }
-
     });
   }
 }
