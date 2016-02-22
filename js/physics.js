@@ -26,7 +26,7 @@ var world = engine.world;
 
 // boilerplate: gravity init
 engine.world.gravity.x = 0;
-engine.world.gravity.y = 0;
+engine.world.gravity.y = 1;
 
 // mouse-controlled constraint
 var mouseConstraint = MouseConstraint.create(engine);
@@ -89,7 +89,7 @@ World.add(world, stackBoundry);
 function newCircle(note) {
   this.note = note;
   World.add(world, Bodies.circle(300, 300, 10, {
-    restitution: 1,
+    restitution: 1.1,
     friction: 0,
     frictionAir: 0,
     frictionStatic: 0,
@@ -102,12 +102,13 @@ function newCircle(note) {
    }));
   var that = this;
   Events.on(engine, 'collisionStart', function(event) {
-    piano.play(that.note, 4, 2);
+    // raygun.play(that.note, 4, 2);
+    instruments[instrument].play(that.note, 4, 2);
   });
 }
 
 //add boundry rotation, basic animation timer boilerplate
-var angle = 0.01;
+var angle = 0.05;
 window.setInterval(function() {
   Composite.rotate(stackBoundry, angle, { x: 300, y: 300 });
 }, 100);
