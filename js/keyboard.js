@@ -16,7 +16,7 @@ function Key(note, keyEl) {
   this.addListener = function() {
     this.keyEl.addEventListener("click", function(event) {
       event.preventDefault();
-      newCircle(that.note);
+      new newCircle(that.note);
     });
   }
 }
