@@ -37,15 +37,15 @@ function Knob(knobEl) {
       switch (knobClicked) {
         // Change instrument
         case 'knob1':
-        angle-=.1;
+          angle-=.1;
           break;
         // Repulsion Control Knob
         case 'knob2':
-        angle+=.1;
+          angle+=.1;
           break;
         // Gravity Changer Knob
         case 'knob3':
-        instrument++;
+          instrument = randNum(0,instruments.length);
           break;
         default:
       }
@@ -59,7 +59,7 @@ for (var i = 0; i < knobs.length; i++) {
 }
 
 function randNum(min, max) {
-  var max=1;
-  var min=-1;
+  // var max=1;
+  // var min=-1;
   return Math.floor(Math.random() * (max - min)) + min;
 }
