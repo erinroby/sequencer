@@ -105,7 +105,8 @@ function newCircle(note) {
    }));
   var that = this;
   Events.on(engine, 'collisionStart', function(event) {
-    piano.play(that.note, 4, 2);
+    // raygun.play(that.note, 4, 2);
+    instruments[instrument].play(that.note, 4, 2);
   });
 }
 

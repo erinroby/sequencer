@@ -2,7 +2,12 @@ var keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'a#', 'c#', 'd#', 'f#', 'g#'];
 var knobs = ['rotation', 'repulsion', 'gravity'];
 var synth = new AudioSynth;
 synth.setVolume(0.1337); // Recommended volume setting
-var piano = synth.createInstrument('raygun');
+var piano = synth.createInstrument('piano');
+var raygun = synth.createInstrument('raygun');
+var acoustic = synth.createInstrument('acoustic');
+var organ = synth.createInstrument('organ');
+var instruments = [piano, raygun, acoustic, organ];
+var instrument = 0;
 
 function Key(note, keyEl) {
   this.note = note;
@@ -30,9 +35,9 @@ function Knob(knobEl) {
       console.log(event.target);
       var knobClicked = event.target.id;
       switch (knobClicked) {
-        // Reverse Rotation Knob
+        // Change instrument
         case 'knob1':
-        angle = -angle;
+        // angle = -angle;
           break;
 
         // Repulsion Control Knob
@@ -43,7 +48,7 @@ function Knob(knobEl) {
         // Gravity Changer Knob
         case 'knob3':
         // engine.world.gravity = -engine.world.gravity;
-        angle-=.1;
+        instrument++;
           break;
 
         default:
@@ -59,8 +64,8 @@ for (var i = 0; i < knobs.length; i++) {
   knob.addListener();
 }
 
-function randNum() {
-  var MAX=1;
-  var MIN=-1;
-  return Math.floor(Math.random() * (MAX - MIN)) + MIN;
+function randNum(min, max) {
+  var max=1;
+  var min=-1;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
