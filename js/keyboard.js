@@ -35,15 +35,15 @@ function Knob(knobEl) {
       console.log(event.target);
       var knobClicked = event.target.id;
       switch (knobClicked) {
-        // Change instrument
+        // Increase counter-clockwise spin
         case 'knob1':
           angle-=.1;
           break;
-        // Repulsion Control Knob
+        // Increase clockwise spin
         case 'knob2':
           angle+=.1;
           break;
-        // Gravity Changer Knob
+        // Instrument changer
         case 'knob3':
           instrument = randNum(0,instruments.length);
           break;
