@@ -8,9 +8,6 @@ var Engine = Matter.Engine,
   Events = Matter.Events;
 
 // boilerplate: create a Matter.js engine
-// var canvasEl = document.getElementById('viewport');
-// document.body = canvasEl;
-
 var engine = Engine.create({
   render: {
     canvas: document.getElementById('viewport'),
