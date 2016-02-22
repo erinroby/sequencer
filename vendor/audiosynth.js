@@ -347,4 +347,37 @@ Synth.loadSoundProfile({
 				)
 		);
 	}
+},
+{
+	name: 'raygun',
+	attack:	function() { return 0.50; },
+	dampen: function() { return 1; },
+	wave: function(i, sampleRate, frequency) {
+		var base = this.modulate[10];
+		var mod = this.modulate.slice(1);
+		return mod[0](
+			i,
+			sampleRate,
+			frequency,
+			mod[9](
+				i,
+				sampleRate,
+				frequency,
+				mod[2](
+					i,
+					sampleRate,
+					frequency,
+					Math.pow(base(i, sampleRate, frequency, 0), 3) +
+						Math.pow(base(i, sampleRate, frequency, 0.5), 5) +
+						Math.pow(base(i, sampleRate, frequency, 1), 7)
+				)
+			) +
+				mod[8](
+					i,
+					sampleRate,
+					frequency,
+					base(i, sampleRate, frequency, 1.75)
+				)
+		);
+	}
 });

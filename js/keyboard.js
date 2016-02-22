@@ -2,7 +2,7 @@ var keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'a#', 'c#', 'd#', 'f#', 'g#'];
 var knobs = ['rotation', 'repulsion', 'gravity'];
 var synth = new AudioSynth;
 synth.setVolume(0.1337); // Recommended volume setting
-var piano = synth.createInstrument('acoustic');
+var piano = synth.createInstrument('raygun');
 
 function Key(note, keyEl) {
   this.note = note;
@@ -37,11 +37,13 @@ function Knob(knobEl) {
 
         // Repulsion Control Knob
         case 'knob2':
+        angle+=.1;
           break;
 
         // Gravity Changer Knob
         case 'knob3':
         // engine.world.gravity = -engine.world.gravity;
+        angle-=.1;
           break;
 
         default:
