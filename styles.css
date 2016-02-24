@@ -152,3 +152,10 @@ button:hover {
 .whiteKey:hover {
   background: #F2F2F2;
 }
+.canvasHolder{
+  align-items: center;
+  justify-content: center;
+}
+#viewport{
+  width: 300px;
+}
