@@ -28,7 +28,7 @@ var world = engine.world;
 
 // boilerplate: gravity init
 engine.world.gravity.x = 0;
-engine.world.gravity.y = 1;
+engine.world.gravity.y = 0;
 
 // mouse-controlled constraint
 var mouseConstraint = MouseConstraint.create(engine);
@@ -90,10 +90,10 @@ World.add(world, stackBoundry);
 //add beach balls
 function newCircle(note) {
   this.note = note;
-  var ballsInScene = world.bodies;
-  if(ballsInScene.length < MAX_BALLS){
+  var totalBalls = world.bodies.length;
+  if(totalBalls < MAX_BALLS){
     World.add(world, Bodies.circle(300, 300, 10, {
-      restitution: 1.22,
+      restitution: 1,
       friction: 1,
       frictionAir: 0,
       frictionStatic: 0,
@@ -105,11 +105,22 @@ function newCircle(note) {
       }
     }));
   }
+  World.add(world, Bodies.circle(300, 300, 10, {
+    restitution: 1,
+    friction: 0,
+    frictionAir: 0,
+    frictionStatic: 0,
+    force: { x: 0.01, y: 0.01},
+    render: {
+      fillStyle: 'blue',
+      strokeStyle: 'blue',
+      lineWidth: 0.5
+    }
+   }));
   var that = this;
   Events.on(engine, 'collisionStart', function(event) {
     // raygun.play(that.note, 4, 2);
     instruments[instrument].play(that.note, 4, 2);
-    // console.log("collision");
   });
 }
 
