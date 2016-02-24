@@ -37,15 +37,15 @@ function Knob(knobEl) {
       switch (knobClicked) {
         // Increase counter-clockwise spin
         case 'knob1':
-          angle-=.1;
+          angle-=0.01;
           break;
         // Increase clockwise spin
         case 'knob2':
-          angle+=.1;
+          angle+=0.01;
           break;
         // Instrument changer
         case 'knob3':
-          instrument = randNum(0,instruments.length);
+          instrument = randNum(0, instruments.length);
           break;
         default:
       }
