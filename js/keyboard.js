@@ -32,7 +32,6 @@ function Knob(knobEl) {
   this.addListener = function() {
     this.knobEl.addEventListener('click', function(event) {
       event.preventDefault();
-      console.log(event.target);
       var knobClicked = event.target.id;
       switch (knobClicked) {
         // Increase counter-clockwise spin
@@ -59,7 +58,5 @@ for (var i = 0; i < knobs.length; i++) {
 }
 
 function randNum(min, max) {
-  // var max=1;
-  // var min=-1;
   return Math.floor(Math.random() * (max - min)) + min;
 }

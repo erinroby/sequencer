@@ -1,3 +1,5 @@
+var MAX_BALLS = 3;
+
 // Matter.js boilerplate
 var Engine = Matter.Engine,
   World = Matter.World,
@@ -88,18 +90,21 @@ World.add(world, stackBoundry);
 //add beach balls
 function newCircle(note) {
   this.note = note;
-  World.add(world, Bodies.circle(300, 300, 10, {
-    restitution: 1.1,
-    friction: 0,
-    frictionAir: 0,
-    frictionStatic: 0,
-    force: { x: 0.01, y: 0.01},
-    render: {
-      fillStyle: 'blue',
-      strokeStyle: 'blue',
-      lineWidth: 0.5
-    }
-   }));
+  var totalBalls = world.bodies.length;
+  if(totalBalls < MAX_BALLS){
+    World.add(world, Bodies.circle(300, 300, 10, {
+      restitution: 1,
+      friction: 1,
+      frictionAir: 0,
+      frictionStatic: 0,
+      force: { x: 0.01, y: 0.00},
+      render: {
+        fillStyle: 'blue',
+        strokeStyle: 'blue',
+        lineWidth: 0.5
+      }
+    }));
+  }
   var that = this;
   Events.on(engine, 'collisionStart', function(event) {
     // raygun.play(that.note, 4, 2);
