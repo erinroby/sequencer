@@ -93,7 +93,7 @@ function newCircle(note) {
   var ballsInScene = world.bodies;
   if(ballsInScene.length < MAX_BALLS){
     World.add(world, Bodies.circle(300, 300, 10, {
-      restitution: 1,
+      restitution: 1.22,
       friction: 1,
       frictionAir: 0,
       frictionStatic: 0,
@@ -109,6 +109,7 @@ function newCircle(note) {
   Events.on(engine, 'collisionStart', function(event) {
     // raygun.play(that.note, 4, 2);
     instruments[instrument].play(that.note, 4, 2);
+    // console.log("collision");
   });
 }
 
