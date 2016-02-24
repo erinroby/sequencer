@@ -90,8 +90,8 @@ World.add(world, stackBoundry);
 //add beach balls
 function newCircle(note) {
   this.note = note;
-  var totalBalls = world.bodies.length;
-  if(totalBalls < MAX_BALLS){
+  var ballsInScene = world.bodies;
+  if(ballsInScene.length < MAX_BALLS){
     World.add(world, Bodies.circle(300, 300, 10, {
       restitution: 1,
       friction: 1,
