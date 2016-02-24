@@ -113,7 +113,7 @@ function newCircle(note) {
 }
 
 //add boundry rotation, basic animation timer boilerplate
-var angle = 0.05;
+var angle = 0.01;
 window.setInterval(function() {
   Composite.rotate(stackBoundry, angle, { x: 300, y: 300 });
 }, 100);
