@@ -34,13 +34,13 @@ function Knob(knobEl) {
       event.preventDefault();
       var knobClicked = event.target.id;
       switch (knobClicked) {
-        // Increase counter-clockwise spin
+        // Invert gravity
         case 'knob1':
-          angle-=0.01;
+          engine.world.gravity.y *= -1;
           break;
-        // Increase clockwise spin
+        // Reverse spin direction
         case 'knob2':
-          angle+=0.01;
+          angle*=-1;
           break;
         // Instrument changer
         case 'knob3':
@@ -58,5 +58,5 @@ for (var i = 0; i < knobs.length; i++) {
 }
 
 function randNum(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min) + min);
 }
