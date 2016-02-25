@@ -4,6 +4,7 @@ Simulator of the Tombola functionality of the [OP-1 Synthesizer](https://www.tee
 
 ## Wiki
 * [Project Wiki](https://github.com/erinroby/sequencer/wiki/Sequencer)
+
 ## Team Members
 * [Erin Roby](https://github.com/erinroby)
 * [Stephanie Lopez](https://github.com/SLLOPEZ)
