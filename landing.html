@@ -15,21 +15,30 @@
         <ul id='menu'>
           <li><a href='index.html'>Home</a></li>
           <li><a href='about-us.html'>About Us</a></li>
-          <li><a href='#'>Some other page</a></li>
+          <li><a href='landing.html'>Some other page</a></li>
         </ul>
       </div>
     </nav>
   </header>
   <body>
-    <h1>Hey there.</h1>
+    <h1>Please sample and select and instrument.</h1>
     <main>
       <div class="container">
         <div class=''></div>
-        <button class="circle-button knob" id="piano"></button>
-        <button class="circle-button knob" id="raygun"></button>
-        <button class="circle-button knob" id="acoustic"></button>
-        <button class="circle-button knob" id="organ"></button>
+        <button class="circle-button knob" id="pianoEl">Piano</button>
+        <button class="circle-button knob" id="acousticEl">Acoustic</button>
+        <button class="circle-button knob" id="organEl">Organ</button>
+        <button class="circle-button knob" id="raygunEl">Raygun</button>
       </div>
+      <select id='instrumentEl' name="select instrument" onchange="changeEventHandler(event);">
+        <!-- <option value="" selected></option> -->
+        <option value="piano" selected>Piano</option>
+        <option value="acoustic">Acoustic</option>
+        <option value="organ">Organ</option>
+        <option value="raygun">Raygun</option>
+        <option value="suprise">Surprise Me!</option>
+      </select>
+      <button id='nextEl'>next</button>
     </main>
   </body>
   <script src="vendor/audiosynth.js"></script>

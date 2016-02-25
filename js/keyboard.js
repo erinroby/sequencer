@@ -9,6 +9,12 @@ var organ = synth.createInstrument('organ');
 var instruments = [piano, raygun, acoustic, organ];
 var instrument = 0;
 
+// var resetEl = document.getElementById('knobReset');
+// resetEl.addEventListener('click', function(event) {
+//   // Composites.remove(stackBoundry, );
+// });
+
+
 function Key(note, keyEl) {
   this.note = note;
   this.keyEl = keyEl;
@@ -56,10 +62,4 @@ function Knob(knobEl) {
 for (var i = 0; i < knobs.length; i++) {
   var knob = new Knob(document.getElementById('knob'+(i+1)));
   knob.addListener();
-}
-
-function randNum(min, max) {
-  // var max=1;
-  // var min=-1;
-  return Math.floor(Math.random() * (max - min)) + min;
 }

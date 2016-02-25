@@ -87,6 +87,7 @@ World.add(world, stackBoundry);
 
 //add beach balls
 function newCircle(note) {
+
   this.note = note;
   World.add(world, Bodies.circle(300, 300, 10, {
     restitution: 1,
@@ -100,11 +101,17 @@ function newCircle(note) {
       lineWidth: 0.5
     }
    }));
+
   var that = this;
+  var tune = localStorage.getItem('tune');
+  var music = synth.createInstrument(tune);
   Events.on(engine, 'collisionStart', function(event) {
-    // raygun.play(that.note, 4, 2);
-    instruments[instrument].play(that.note, 4, 2);
+    music.play(that.note, 4, 2);
   });
+}
+
+function randNum(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 //add boundry rotation, basic animation timer boilerplate
