@@ -1,3 +1,5 @@
+var MAX_BALLS = 3;
+
 // Matter.js boilerplate
 var Engine = Matter.Engine,
   World = Matter.World,
@@ -25,8 +27,8 @@ var engine = Engine.create({
 var world = engine.world;
 
 // boilerplate: gravity init
-engine.world.gravity.x = 0;
-engine.world.gravity.y = 0;
+engine.world.gravity.x = 0.1;
+engine.world.gravity.y = -1;
 
 // mouse-controlled constraint
 var mouseConstraint = MouseConstraint.create(engine);
@@ -86,20 +88,24 @@ var stackBoundry = Composites.stack(100, 100, 1, 4, 0, 0, function(x, y) {
 World.add(world, stackBoundry);
 
 //add beach balls
+// TODO: Make a Ball object elsewhere, and add it here
 function newCircle(note) {
   this.note = note;
-  World.add(world, Bodies.circle(300, 300, 10, {
-    restitution: 1,
-    friction: 0,
-    frictionAir: 0,
-    frictionStatic: 0,
-    force: { x: 0.01, y: 0.01},
-    render: {
-      fillStyle: 'blue',
-      strokeStyle: 'blue',
-      lineWidth: 0.5
-    }
-   }));
+  var totalBalls = world.bodies.length;
+  if(totalBalls < MAX_BALLS){
+    World.add(world, Bodies.circle(300, 300, 10, {
+      restitution: 0.99,
+      friction: 1,
+      frictionAir: 0,
+      frictionStatic: Infinity,
+      force: { x: 0.01, y: 0.00},
+      render: {
+        fillStyle: 'blue',
+        strokeStyle: 'blue',
+        lineWidth: 0.5
+      }
+    }));
+  }
   var that = this;
   Events.on(engine, 'collisionStart', function(event) {
     // raygun.play(that.note, 4, 2);
@@ -108,7 +114,7 @@ function newCircle(note) {
 }
 
 //add boundry rotation, basic animation timer boilerplate
-var angle = 0.01;
+var angle = 0.03;
 window.setInterval(function() {
   Composite.rotate(stackBoundry, angle, { x: 300, y: 300 });
 }, 100);
