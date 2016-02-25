@@ -88,11 +88,28 @@ var stackBoundry = Composites.stack(100, 100, 1, 4, 0, 0, function(x, y) {
 World.add(world, stackBoundry);
 
 //add beach balls
-// TODO: Make a Ball object elsewhere, and add it here
+// TODO: Make a Ball object elsewhere, and add it here (thomas)
 function newCircle(note) {
   this.note = note;
-  var totalBalls = world.bodies.length;
-  if(totalBalls < MAX_BALLS){
+  var ballsInScene = world.bodies;
+  if(ballsInScene.length < MAX_BALLS){
+    World.add(world, Bodies.circle(300, 300, 10, {
+      restitution: 0.99,
+      friction: 1,
+      frictionAir: 0,
+      frictionStatic: Infinity,
+      force: { x: 0.01, y: 0.00},
+      render: {
+        fillStyle: 'blue',
+        strokeStyle: 'blue',
+        lineWidth: 0.5
+      }
+    }));
+  }
+  else {
+    // World.add(world, ballsInScene.pop());
+    // TODO: Figure out how to make the above line work (thomas)
+    ballsInScene.pop(ballsInScene.length);
     World.add(world, Bodies.circle(300, 300, 10, {
       restitution: 0.99,
       friction: 1,
