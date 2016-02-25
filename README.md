@@ -1,6 +1,6 @@
 # Sequencer
 ## Overview
-Simulator of the Tombola functionality of the [OP-1 Synthesizer](https://www.teenageengineering.com/products/op-1). Check out the actual synth in action [here](https://www.youtube.com/watch?v=SHoDUCAd4-I).
+Simulator of the Tombola functionality of the [OP-1 Synthesizer](https://www.teenageengineering.com/products/op-1). Check out the actual synth in action [here](https://www.youtube.com/watch?v=SHoDUCAd4-I). Pages is deployed [here](http://erinroby.github.io/sequencer/).
 
 ## Team Members
 * [Erin Roby](https://github.com/erinroby)
