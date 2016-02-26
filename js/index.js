@@ -26,18 +26,8 @@ for (var i = 0; i < instruments.length; i++) {
   tone.addListener();
 };
 
-function changeEventHandler(event) {
-  var tune = event.target.value;
-  localStorage.setItem("tune", tune);
-}
-
 next.addEventListener('click', function(event) {
   var instrumentSelect = document.getElementById('instrumentEl');
   localStorage.setItem("tune", instrumentSelect.value);
-  location.assign("index.html");
+  location.assign("sequencer.html");
 });
-
-// when the user clicks next:
-// check what instrument they chose
-// store what they chose
-// go to the sequencer page

@@ -85,9 +85,18 @@ var stackBoundry = Composites.stack(100, 100, 1, 4, 0, 0, function(x, y) {
 
 World.add(world, stackBoundry);
 
+function removeSide() {
+  var boundry = Composite.allBodies(stackBoundry); //this returns an array of 4 objects. Each has it's own id.
+  var explodeSide = boundry[0];
+  if (boundry.length !== 4) {
+    World.add(world, stackBoundry);
+  } else {
+    Composite.remove(stackBoundry, explodeSide);
+  };
+}
+
 //add beach balls
 function newCircle(note) {
-
   this.note = note;
   World.add(world, Bodies.circle(300, 300, 10, {
     restitution: 1,
@@ -101,7 +110,6 @@ function newCircle(note) {
       lineWidth: 0.5
     }
    }));
-
   var that = this;
   var tune = localStorage.getItem('tune');
   var music = synth.createInstrument(tune);
@@ -110,15 +118,15 @@ function newCircle(note) {
   });
 }
 
-function randNum(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
 //add boundry rotation, basic animation timer boilerplate
 var angle = 0.01;
 window.setInterval(function() {
   Composite.rotate(stackBoundry, angle, { x: 300, y: 300 });
 }, 100);
+
+function randNum(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 // run the engine
 Engine.run(engine);

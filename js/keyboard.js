@@ -9,12 +9,6 @@ var organ = synth.createInstrument('organ');
 var instruments = [piano, raygun, acoustic, organ];
 var instrument = 0;
 
-// var resetEl = document.getElementById('knobReset');
-// resetEl.addEventListener('click', function(event) {
-//   // Composites.remove(stackBoundry, );
-// });
-
-
 function Key(note, keyEl) {
   this.note = note;
   this.keyEl = keyEl;
@@ -47,7 +41,7 @@ function Knob(knobEl) {
           break;
         // Increase clockwise spin
         case 'knob2':
-          angle+=0.01;
+          removeSide();
           break;
         // Instrument changer
         case 'knob3':
