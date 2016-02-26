@@ -1,4 +1,4 @@
-var MAX_BALLS = 3;
+var MAX_BALLS = 6;
 
 // Matter.js boilerplate
 var Engine = Matter.Engine,
