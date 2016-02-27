@@ -12,3 +12,18 @@ iframe {
   width: 50%;
   margin: 0 auto;
 }
+
+.active {
+  padding-left: 5em;
+  padding-right: 5em;
+  font-family: courier, monospace;
+  font-weight: lighter;
+  text-align: justify;;
+}
+
+#erin {
+}
+#stephanie {
+}
+#thomas {
+}
