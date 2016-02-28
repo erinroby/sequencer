@@ -99,7 +99,10 @@ function Knob(knobEl) {
         case 'knob3':
           instrument = randNum(0,instruments.length);
           break;
-        default:
+        // Reset
+        case 'knob4':
+          document.location.reload(true);
+          break;
       }
     });
   }
@@ -113,6 +116,3 @@ for (var i = 0; i < knobs.length; i++) {
 function randNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
-
-// code for reset button
-// document.location.reload(true);
