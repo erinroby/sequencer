@@ -19,7 +19,7 @@ var engine = Engine.create({
       height: 600,
       background: "ffffff",
       wireframes: false,
-      showAngleIndicator: false,
+      showAngleIndicator: false
     }
   }
 });
