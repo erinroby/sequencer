@@ -22,34 +22,26 @@ function Key(note, keyEl) {
   this.keyBoard = function() {
     document.addEventListener('keydown', function(event) {
       event.preventDefault();
-      console.log(event.target);
       switch (event.code) {
         case 'KeyA':
-          console.log('test')
           new newCircle('F');
           break;
         case 'KeyS':
-          console.log('test2')
           new newCircle('G');
           break;
         case 'KeyD':
-          console.log('test3')
           new newCircle('A');
           break;
         case 'KeyF':
-          console.log('test4')
           new newCircle('B');
           break;
         case 'KeyJ':
-          console.log('test5')
           new newCircle('C');
           break;
         case 'KeyK':
-          console.log('test6')
           new newCircle('D');
           break;
         case 'KeyL':
-          console.log('test7')
           new newCircle('E');
           break;
         case 'KeyW':
