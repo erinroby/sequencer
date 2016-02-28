@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Sequencer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <header>
     <nav>
@@ -14,53 +14,38 @@
         <span></span>
         <ul id='menu'>
           <li><a href='index.html'>Home</a></li>
+          <li><a href='sequencer.html'>Sequencer</a></li>
           <li><a href='about-us.html'>About Us</a></li>
-          <li><a href='#'>Some other page</a></li>
         </ul>
       </div>
     </nav>
   </header>
   <body>
-    <h1>Press any key to begin.</h1>
-    <div class='container canvasHolder'>
-      <canvas id='viewport'></canvas>
-    </div>
+    <h1>Please sample and select an instrument.</h1>
     <main>
       <div class="container">
-        <div class="flex60"></div>
-        <button class="circle-button knob" id="knob1"></button>
-        <button class="circle-button knob" id="knob2"></button>
-        <button class="circle-button knob" id="knob3"></button>
+        <div class="flex"></div>
+        <button class="circle-button knob sample" id="pianoEl">Piano</button>
+        <button class="circle-button knob sample" id="acousticEl">Acoustic</button>
+        <button class="circle-button knob sample" id="organEl">Organ</button>
+        <button class="circle-button knob sample" id="raygunEl">Raygun</button>
+        <div class= "flex"></div>
       </div>
-      <form class="container">
-        <div class="flex25"></div>
-        <div class="container blackKeyLeft">
-          <button class="circle-button blackKey" id="f#Key"></button>
-          <button class="circle-button blackKey" id="g#Key"></button>
-          <button class="circle-button blackKey" id="a#Key"></button>
-        </div>
-        <div class="container blackKeyRight">
-          <button class="circle-button blackKey" id="c#Key"></button>
-          <button class="circle-button blackKey" id="d#Key"></button>
-        </div>
-      </form>
-      <form class="container">
-        <div class="flex23"></div>
-        <div class="container">
-          <button class="whiteKey" id="fKey"></button>
-          <button class="whiteKey" id="gKey"></button>
-          <button class="whiteKey" id="aKey"></button>
-          <button class="whiteKey" id="bKey"></button>
-          <button class="whiteKey" id="cKey"></button>
-          <button class="whiteKey" id="dKey"></button>
-          <button class="whiteKey" id="eKey"></button>
-        </div>
-      </form>
+      <div class="container selector">
+      <div class= "flex"></div>
+      <select id='instrumentEl' name="select instrument">
+        <option value="piano" selected>Piano</option>
+        <option value="acoustic">Acoustic</option>
+        <option value="organ">Organ</option>
+        <option value="raygun">Raygun</option>
+        <!-- <option value="suprise">Surprise Me!</option> -->
+      </select>
+      <button id='nextEl'>next</button>
+      <div class= "flex"></div>
+      </div>
     </main>
   </body>
   <script src="vendor/audiosynth.js"></script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script src="vendor/matter.js"></script>
-  <script src="js/physics.js"></script>
-  <script src="js/keyboard.js"></script>
+  <script src="js/index.js"></script>
 </html>

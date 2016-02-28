@@ -28,7 +28,7 @@ var world = engine.world;
 
 // boilerplate: gravity init
 engine.world.gravity.x = 0.1;
-engine.world.gravity.y = -1;
+engine.world.gravity.y = 0.1;
 
 // mouse-controlled constraint
 var mouseConstraint = MouseConstraint.create(engine);
@@ -87,6 +87,12 @@ var stackBoundry = Composites.stack(100, 100, 1, 4, 0, 0, function(x, y) {
 
 World.add(world, stackBoundry);
 
+function removeSide() {
+  var boundry = Composite.allBodies(stackBoundry);
+  var explodeSide = boundry[0];
+  Composite.remove(stackBoundry, explodeSide);
+}
+
 //add beach balls
 // TODO: Make a Ball object elsewhere, and add it here (thomas)
 function newCircle(note) {
@@ -124,9 +130,10 @@ function newCircle(note) {
     }));
   }
   var that = this;
+  var tune = localStorage.getItem('tune');
+  var music = synth.createInstrument(tune);
   Events.on(engine, 'collisionStart', function(event) {
-    // raygun.play(that.note, 4, 2);
-    instruments[instrument].play(that.note, 4, 2);
+    music.play(that.note, 4, 2);
   });
 }
 
@@ -135,6 +142,10 @@ var angle = 0.03;
 window.setInterval(function() {
   Composite.rotate(stackBoundry, angle, { x: 300, y: 300 });
 }, 100);
+
+function randNum(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 // run the engine
 Engine.run(engine);
