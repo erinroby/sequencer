@@ -14,9 +14,61 @@ function Key(note, keyEl) {
   this.keyEl = keyEl;
   var that = this;
   this.addListener = function() {
-    this.keyEl.addEventListener("click", function(event) {
+    this.keyEl.addEventListener('click', function(event) {
       event.preventDefault();
       new newCircle(that.note);
+    });
+  }
+  this.keyBoard = function() {
+    document.addEventListener('keydown', function(event) {
+      event.preventDefault();
+      console.log(event.target);
+      switch (event.code) {
+        case 'KeyA':
+          console.log('test')
+          new newCircle('F');
+          break;
+        case 'KeyS':
+          console.log('test2')
+          new newCircle('G');
+          break;
+        case 'KeyD':
+          console.log('test3')
+          new newCircle('A');
+          break;
+        case 'KeyF':
+          console.log('test4')
+          new newCircle('B');
+          break;
+        case 'KeyJ':
+          console.log('test5')
+          new newCircle('C');
+          break;
+        case 'KeyK':
+          console.log('test6')
+          new newCircle('D');
+          break;
+        case 'KeyL':
+          console.log('test7')
+          new newCircle('E');
+          break;
+        case 'KeyW':
+          new newCircle('F#');
+          break;
+        case 'KeyE':
+          new newCircle('G#');
+          break;
+        case 'KeyR':
+          new newCircle('A#');
+          break;
+        case 'KeyI':
+          new newCircle('C#');
+          break;
+        case 'KeyO':
+          new newCircle('D#');
+          break;
+        default:
+      }
     });
   }
 }
@@ -25,6 +77,7 @@ for (var i = 0; i < keys.length; i++) {
   var key = new Key(keys[i].toUpperCase(), document.getElementById(keys[i] + 'Key'));
   key.addListener();
 };
+key.keyBoard();
 
 function Knob(knobEl) {
   this.status = status;
