@@ -32,12 +32,11 @@ function Knob(knobEl) {
   this.addListener = function() {
     this.knobEl.addEventListener('click', function(event) {
       event.preventDefault();
-      console.log(event.target);
       var knobClicked = event.target.id;
       switch (knobClicked) {
-        // Increase counter-clockwise spin
+        // Reverse spin direction
         case 'knob1':
-          angle-=0.01;
+          angle*=-1;
           break;
         // Remove side of square.
         case 'knob2':
@@ -45,7 +44,7 @@ function Knob(knobEl) {
           break;
         // Instrument changer
         case 'knob3':
-          document.location.reload(true);
+          instrument = randNum(0,instruments.length);
           break;
         default:
       }
@@ -57,3 +56,10 @@ for (var i = 0; i < knobs.length; i++) {
   var knob = new Knob(document.getElementById('knob'+(i+1)));
   knob.addListener();
 }
+
+function randNum(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+// code for reset button
+// document.location.reload(true);

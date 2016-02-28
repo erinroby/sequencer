@@ -1,3 +1,5 @@
+var MAX_BALLS = 6;
+
 // Matter.js boilerplate
 var Engine = Matter.Engine,
   World = Matter.World,
@@ -25,8 +27,8 @@ var engine = Engine.create({
 var world = engine.world;
 
 // boilerplate: gravity init
-engine.world.gravity.x = 0;
-engine.world.gravity.y = 0;
+engine.world.gravity.x = 0.1;
+engine.world.gravity.y = -1;
 
 // mouse-controlled constraint
 var mouseConstraint = MouseConstraint.create(engine);
@@ -92,20 +94,41 @@ function removeSide() {
 }
 
 //add beach balls
+// TODO: Make a Ball object elsewhere, and add it here (thomas)
 function newCircle(note) {
   this.note = note;
-  World.add(world, Bodies.circle(300, 300, 10, {
-    restitution: 1,
-    friction: 0,
-    frictionAir: 0,
-    frictionStatic: 0,
-    force: { x: 0.01, y: 0.01},
-    render: {
-      fillStyle: 'blue',
-      strokeStyle: 'blue',
-      lineWidth: 0.5
-    }
-   }));
+  var ballsInScene = world.bodies;
+  if(ballsInScene.length < MAX_BALLS){
+    World.add(world, Bodies.circle(300, 300, 10, {
+      restitution: 0.99,
+      friction: 1,
+      frictionAir: 0,
+      frictionStatic: Infinity,
+      force: { x: 0.01, y: 0.00},
+      render: {
+        fillStyle: 'blue',
+        strokeStyle: 'blue',
+        lineWidth: 0.5
+      }
+    }));
+  }
+  else {
+    // World.add(world, ballsInScene.pop());
+    // TODO: Figure out how to make the above line work (thomas)
+    ballsInScene.pop(ballsInScene.length);
+    World.add(world, Bodies.circle(300, 300, 10, {
+      restitution: 0.99,
+      friction: 1,
+      frictionAir: 0,
+      frictionStatic: Infinity,
+      force: { x: 0.01, y: 0.00},
+      render: {
+        fillStyle: 'blue',
+        strokeStyle: 'blue',
+        lineWidth: 0.5
+      }
+    }));
+  }
   var that = this;
   var tune = localStorage.getItem('tune');
   var music = synth.createInstrument(tune);
@@ -115,7 +138,7 @@ function newCircle(note) {
 }
 
 //add boundry rotation, basic animation timer boilerplate
-var angle = 0.01;
+var angle = 0.03;
 window.setInterval(function() {
   Composite.rotate(stackBoundry, angle, { x: 300, y: 300 });
 }, 100);
