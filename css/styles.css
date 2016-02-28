@@ -151,6 +151,10 @@ button:hover {
   height:60px;
   background:#000;
   margin: 12px;
+  color: white;
+  text-align: center;
+  line-height: normal;
+  font-size: 0.8em;
 }
 
 .blackKeyLeft {
