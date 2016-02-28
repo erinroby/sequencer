@@ -1,12 +1,12 @@
 var keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'a#', 'c#', 'd#', 'f#', 'g#'];
-var knobs = ['decrease', 'increase', 'instrument'];
+var knobs = ['decrease', 'increase', 'instrument', 'refresh'];
 var synth = new AudioSynth;
 synth.setVolume(0.1337); // Recommended volume setting
 var piano = synth.createInstrument('piano');
 var raygun = synth.createInstrument('raygun');
 var acoustic = synth.createInstrument('acoustic');
 var organ = synth.createInstrument('organ');
-var instruments = [piano, raygun, acoustic, organ];
+var instruments = [piano, acoustic, organ, raygun];
 var instrument = 0;
 
 function Key(note, keyEl) {
@@ -101,7 +101,7 @@ function Knob(knobEl) {
           break;
         // Reset
         case 'knob4':
-          document.location.reload(true);
+          window.location.reload();
           break;
       }
     });

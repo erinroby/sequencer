@@ -28,6 +28,6 @@ for (var i = 0; i < instruments.length; i++) {
 
 next.addEventListener('click', function(event) {
   var instrumentSelect = document.getElementById('instrumentEl');
-  localStorage.setItem("tune", instrumentSelect.value);
+  localStorage.setItem("tune", parseInt(instrumentSelect.value, 10)); // radixs
   location.assign("sequencer.html");
 });
