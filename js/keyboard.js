@@ -34,13 +34,13 @@ function Knob(knobEl) {
       event.preventDefault();
       var knobClicked = event.target.id;
       switch (knobClicked) {
-        // Invert gravity
-        case 'knob1':
-          engine.world.gravity.y *= -1;
-          break;
         // Reverse spin direction
-        case 'knob2':
+        case 'knob1':
           angle*=-1;
+          break;
+        // Remove side of square.
+        case 'knob2':
+          removeSide();
           break;
         // Instrument changer
         case 'knob3':
@@ -60,3 +60,6 @@ for (var i = 0; i < knobs.length; i++) {
 function randNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
+
+// code for reset button
+// document.location.reload(true);
