@@ -86,13 +86,9 @@ var stackBoundry = Composites.stack(100, 100, 1, 4, 0, 0, function(x, y) {
 World.add(world, stackBoundry);
 
 function removeSide() {
-  var boundry = Composite.allBodies(stackBoundry); //this returns an array of 4 objects. Each has it's own id.
+  var boundry = Composite.allBodies(stackBoundry);
   var explodeSide = boundry[0];
-  if (boundry.length !== 4) {
-    World.add(world, stackBoundry);
-  } else {
-    Composite.remove(stackBoundry, explodeSide);
-  };
+  Composite.remove(stackBoundry, explodeSide);
 }
 
 //add beach balls

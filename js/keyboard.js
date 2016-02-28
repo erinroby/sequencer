@@ -39,13 +39,13 @@ function Knob(knobEl) {
         case 'knob1':
           angle-=0.01;
           break;
-        // Increase clockwise spin
+        // Remove side of square.
         case 'knob2':
           removeSide();
           break;
         // Instrument changer
         case 'knob3':
-          instrument = randNum(0, instruments.length);
+          document.location.reload(true);
           break;
         default:
       }
