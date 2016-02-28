@@ -130,10 +130,9 @@ function newCircle(note) {
     }));
   }
   var that = this;
-  var tune = localStorage.getItem('tune');
-  var music = synth.createInstrument(tune);
+  instrument = localStorage.getItem('tune');
   Events.on(engine, 'collisionStart', function(event) {
-    music.play(that.note, 4, 2);
+    instruments[instrument].play(that.note, 4, 2);
   });
 }
 
