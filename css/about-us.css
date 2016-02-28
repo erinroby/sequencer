@@ -17,11 +17,11 @@ iframe {
 
 .item{
   border: 0.25em lightblue solid;
-}
-.active {
   padding-left: 5em;
   padding-right: 5em;
   padding-bottom: 3em;
+}
+.active {
   font-family: courier, monospace;
   font-weight: lighter;
   text-align: justify;
@@ -32,4 +32,13 @@ iframe {
 #stephanie {
 }
 #thomas {
+}
+
+footer {
+  text-align: center;
+}
+
+video {
+  border-radius: 30px;
+  width: 570px;
 }
