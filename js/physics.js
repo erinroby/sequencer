@@ -28,7 +28,7 @@ var world = engine.world;
 
 // boilerplate: gravity init
 engine.world.gravity.x = 0.1;
-engine.world.gravity.y = -1;
+engine.world.gravity.y = 0.1;
 
 // mouse-controlled constraint
 var mouseConstraint = MouseConstraint.create(engine);

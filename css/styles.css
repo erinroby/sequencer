@@ -1,4 +1,4 @@
-h1, h2{
+h1, h2, button, option {
   font-family: courier, monospace;
   font-weight: lighter;
   text-align: center;
@@ -57,16 +57,20 @@ h1, h2{
   transform: translate(-120%, 0%);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
+
 #menu li{
   padding: 20px;
 }
+
 #menu-toggle input:checked ~ #menu{
   transform: translate(10px);
 }
+
 a{
   text-decoration: none;
   color: gray;
 }
+
 a:hover{
   color: black;
 }
@@ -77,6 +81,10 @@ button:hover {
 
 .container {
   display: flex;
+}
+
+.flex {
+  flex: 1;
 }
 
 .flex25 {
@@ -96,6 +104,7 @@ button:hover {
   line-height: 100px;
   border: none;
   display: block;
+  padding-top: 10px;
 }
 
 .knob {
@@ -129,6 +138,14 @@ button:hover {
   background: rgb(11, 83, 147);
 }
 
+.sample {
+  margin: 20px;
+}
+
+.sample:hover {
+  background: orange;
+}
+
 .blackKey {
   width:60px;
   height:60px;
@@ -158,4 +175,21 @@ button:hover {
 }
 #viewport{
   width: 300px;
+}
+
+select {
+  font-family:
+  padding: 10px;
+}
+
+.selector {
+  padding: 40px;
+}
+
+#nextEl {
+  margin-left: 10px;
+}
+
+#nextEl:hover {
+  background: blue;
 }
